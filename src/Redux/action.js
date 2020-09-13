@@ -12,11 +12,16 @@ const get_jobs_success = (payload) => {
 
 export const get_jobs = () => {
     return dispatch => {
-        return axios.get(
-            'https://jobs.github.com/positions.json'
-            )
-            .then((res) => res.data)
-            .then(res => dispatch(get_jobs_success(res)))
-            .catch(err => console.log(err))
+        return axios({
+            method:'get',
+            url:'https://jobs.github.com/positions.json?description=python&full_time=true&location=sf'
+        })
+            .then((res) => console.log(res.data))
+            .then((res) => {
+                dispatch(get_jobs_success(res))
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 }

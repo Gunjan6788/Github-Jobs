@@ -6,7 +6,7 @@ export default function PublicRoutes() {
     return (
         <div>
             <Switch>
-                <Route path='/' exact render={Home}></Route>
+                <Route path='/' exact component={Home}></Route>
             </Switch>
         </div>
     )
